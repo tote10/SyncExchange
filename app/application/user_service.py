@@ -11,3 +11,11 @@ def register_user(email:str,password:str):
     hashed_password = pwd_context.hash(password)
     user = create_user(email,hashed_password)
     return user
+
+def login_user(email:str,password:str):
+    user = get_user_by_email(email)
+    if not user:
+        raise ValueError("User not found")
+    if not pwd_context.verify(password,user.hashed_password):
+        raise ValueError("Invalid password")
+    return user
