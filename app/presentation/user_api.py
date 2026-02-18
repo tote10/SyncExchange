@@ -13,11 +13,8 @@ class RegisterResponse(BaseModel):
 
 @router.post("/register", response_model=RegisterResponse)
 def register(data: RegisterRequest):
-    print("Received request:", data)
     try:
         user = register_user(data.email, data.password)
-        print("Created user object:", user)
         return RegisterResponse(id=user.id, email=user.email)
     except Exception as e:
-        print("Exception:", e)
         raise HTTPException(status_code=400, detail=str(e))
