@@ -1,5 +1,5 @@
-import urllib.parse
+from fastapi import FastAPI
+from app.presentation.user_api import router as user_router
 
-password = '175@#Mt8'
-encoded_password = urllib.parse.quote(password)
-print(encoded_password)
+app = FastAPI()
+app.include_router(user_router)
