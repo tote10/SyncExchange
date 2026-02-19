@@ -25,8 +25,10 @@ def register_user(email:str,password:str):
         raise ValueError("Password must contain at least one special character")
     if " " in password:
         raise ValueError("Password cannot contain spaces")
-    if any(ord(c) < 32 for c in password or password.endswith("\\")):
-        raise ValueError("Password cannot contain control characters or end with a backslash")
+    if any(ord(c) < 32 for c in password):
+        raise ValueError("Password cannot contain control characters")
+    if password.endswith("\\"):
+        raise ValueError("Password cannot end with a backslash")
     hashed_password = pwd_context.hash(password)
     user = create_user(email,hashed_password)
     return user
@@ -35,6 +37,6 @@ def login_user(email:str,password:str):
     user = get_user_by_email(email)
     if not user:
         raise ValueError("User not found")
-    if not pwd_context.verify(password,user.hashed_password):
-        raise ValueError("Invalid password")
+    if not pwd_context.verify(password,user.password_hash):
+        raise ValueError("Invalid Credentials")
     return user
