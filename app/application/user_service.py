@@ -40,8 +40,4 @@ def login_user(email:str,password:str):
     if not pwd_context.verify(password,user.password_hash):
         raise ValueError("Invalid Credentials")
     return user
-def logout_user(email:str):
-    user = get_user_by_email(email)
-    if not user:
-        raise ValueError("User not found")
-    return user
+
