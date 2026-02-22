@@ -40,4 +40,3 @@ def login_user(email:str,password:str):
     if not pwd_context.verify(password,user.password_hash):
         raise ValueError("Invalid Credentials")
     return user
-

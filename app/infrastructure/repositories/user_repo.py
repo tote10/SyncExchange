@@ -27,4 +27,3 @@ def get_user_by_email(email:str):
     if row :
         return User(id=row[0], email=row[1], password_hash=row[2])
     return None
-    
