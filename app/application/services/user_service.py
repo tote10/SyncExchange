@@ -1,7 +1,7 @@
 from passlib.context import CryptContext
-from app.infrastructure.user_repo import create_user
-from app.infrastructure.user_repo import get_user_by_email
-from pydantic import EmailStr
+from app.infrastructure.repositories.user_repo import create_user
+from app.infrastructure.repositories.user_repo import get_user_by_email
+
 import re
 
 

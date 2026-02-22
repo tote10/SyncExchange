@@ -1,5 +1,5 @@
-from app.domain.user import User
-from app.infrastructure.db import get_connection
+from app.domain.entities.user import User
+from app.infrastructure.database.db import get_connection
 
 def create_user(email:str,password_hash:str)->User:
     conn = get_connection()

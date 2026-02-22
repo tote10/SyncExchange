@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.application.user_service import register_user,login_user
+from app.application.services.user_service import register_user,login_user
 from pydantic import BaseModel, EmailStr
 
 router = APIRouter()
